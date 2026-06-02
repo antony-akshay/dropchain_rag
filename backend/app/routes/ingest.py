@@ -26,6 +26,7 @@ async def ingest(file: UploadFile = File(...)):
             "chunks": chunks_count
         }
     except Exception as e:
+        print(e)
         raise HTTPException(status_code=500, detail=str(e))
     finally:
         # Clean up temporary file
