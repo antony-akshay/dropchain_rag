@@ -53,3 +53,7 @@ out/
 # Misc
 *.sqlite3
 *.db
+
+
+chroma_db/
+/backend/chroma_db/

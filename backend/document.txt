@@ -1,0 +1,172 @@
+ACME CORPORATION - INTERNAL COMPANY POLICY DOCUMENT
+
+Document Version: 3.2
+Effective Date: January 1, 2026
+Classification: Internal Use Only
+
+------------------------------------------------------------
+1. COMPANY OVERVIEW
+------------------------------------------------------------
+
+ACME Corporation is a global enterprise specializing in cloud infrastructure, AI-powered software solutions, and enterprise security systems. The company operates across North America, Europe, and Asia with over 12,000 employees.
+
+ACME Corporation focuses on delivering scalable and secure digital solutions for enterprise clients in finance, healthcare, and logistics sectors.
+
+------------------------------------------------------------
+2. CODE OF CONDUCT
+------------------------------------------------------------
+
+All employees must maintain professional behavior at all times.
+
+2.1 Respectful Workplace
+Employees must treat colleagues with respect regardless of gender, nationality, religion, or background.
+
+2.2 Harassment Policy
+ACME Corporation has zero tolerance for harassment, discrimination, or bullying in any form.
+
+2.3 Ethical Behavior
+Employees must avoid conflicts of interest and disclose any situation that may compromise company integrity.
+
+------------------------------------------------------------
+3. DATA SECURITY POLICY
+------------------------------------------------------------
+
+3.1 Data Classification
+All company data must be classified into one of the following:
+- Public
+- Internal
+- Confidential
+- Restricted
+
+3.2 Access Control
+Access to systems is enforced using Role-Based Access Control (RBAC) and Multi-Factor Authentication (MFA).
+
+3.3 Password Policy
+Passwords must be at least 12 characters long and include uppercase, lowercase, numbers, and symbols.
+
+3.4 Incident Reporting
+Any security incident must be reported to the Security Operations Center (SOC) within 30 minutes.
+
+------------------------------------------------------------
+4. ENGINEERING GUIDELINES
+------------------------------------------------------------
+
+4.1 Code Quality
+All code must follow ACME engineering standards and pass peer review before merging.
+
+4.2 CI/CD Pipeline
+All deployments must go through automated CI/CD pipelines and require approval before production release.
+
+4.3 Testing Requirements
+Unit tests are mandatory for all new features. Minimum coverage threshold is 80%.
+
+4.4 API Design
+All APIs must follow RESTful standards and include proper versioning.
+
+------------------------------------------------------------
+5. SOFTWARE DEVELOPMENT POLICY
+------------------------------------------------------------
+
+5.1 Version Control
+All projects must use Git as the version control system.
+
+5.2 Branch Strategy
+Developers must follow the GitFlow branching model.
+
+5.3 Commit Messages
+Commit messages must be clear and descriptive.
+
+Example:
+"Fix authentication bug in login module"
+
+------------------------------------------------------------
+6. HUMAN RESOURCES POLICY
+------------------------------------------------------------
+
+6.1 Working Hours
+Standard working hours are 9:00 AM to 6:00 PM, Monday through Friday.
+
+6.2 Leave Policy
+Employees are entitled to:
+- 20 paid annual leave days
+- 10 sick leave days
+- 5 personal leave days
+
+6.3 Remote Work
+Employees may work remotely up to 3 days per week with manager approval.
+
+6.4 Performance Reviews
+Performance evaluations are conducted twice a year.
+
+------------------------------------------------------------
+7. IT POLICY
+------------------------------------------------------------
+
+7.1 Device Usage
+Company devices must be used for work purposes only.
+
+7.2 Software Installation
+Only approved software may be installed on company systems.
+
+7.3 Data Backup
+All critical systems are backed up daily.
+
+------------------------------------------------------------
+8. COMPLIANCE POLICY
+------------------------------------------------------------
+
+8.1 Legal Compliance
+ACME Corporation complies with all applicable local and international laws.
+
+8.2 Audit Requirements
+Internal audits are conducted quarterly.
+
+8.3 Data Privacy
+All user data must comply with GDPR and other relevant privacy regulations.
+
+------------------------------------------------------------
+9. INCIDENT RESPONSE POLICY
+------------------------------------------------------------
+
+9.1 Security Incidents
+All incidents must be categorized based on severity:
+- Low
+- Medium
+- High
+- Critical
+
+9.2 Response Time
+Critical incidents must be addressed immediately within 1 hour.
+
+9.3 Communication
+Only authorized personnel may communicate incident details externally.
+
+------------------------------------------------------------
+10. AI AND MACHINE LEARNING POLICY
+------------------------------------------------------------
+
+10.1 Model Usage
+AI models must be reviewed before deployment in production systems.
+
+10.2 Data Usage
+Training data must not include sensitive personal information.
+
+10.3 Responsible AI
+ACME Corporation ensures fairness, transparency, and accountability in all AI systems.
+
+------------------------------------------------------------
+11. TERMINATION POLICY
+------------------------------------------------------------
+
+11.1 Grounds for Termination
+Employment may be terminated due to:
+- Policy violation
+- Poor performance
+- Misconduct
+
+11.2 Exit Process
+Employees must return all company property and complete exit documentation.
+
+------------------------------------------------------------
+END OF DOCUMENT
+------------------------------------------------------------
