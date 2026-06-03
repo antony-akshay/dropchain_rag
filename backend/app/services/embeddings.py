@@ -1,5 +1,7 @@
-from langchain_community.embeddings import OllamaEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from app.config import EMBEDDING_MODEL
 
 # Singleton instance of embeddings for the application
-embeddings = OllamaEmbeddings(model=EMBEDDING_MODEL)
+embeddings = HuggingFaceEmbeddings(
+    model_name="BAAI/bge-small-en-v1.5"
+)
