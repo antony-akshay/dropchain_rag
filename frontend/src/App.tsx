@@ -11,6 +11,7 @@ export default function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [question, setQuestion] = useState("");
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [documentName, setDocumentName] = useState("");
   const [openCitation, setOpenCitation] = useState<number | null>(null);
 
@@ -20,11 +21,15 @@ export default function App() {
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = e.target.files?.[0];
+    console.log("File selected:", file?.name);
 
     if (!file) return;
 
+    setUploading(true);
     try {
+      console.log("Uploading document...");
       const result = await uploadDocument(file);
+      console.log("Upload result:", result);
 
       setDocumentName(file.name);
 
@@ -35,9 +40,14 @@ export default function App() {
           content: `📄 ${file.name} uploaded successfully (${result.chunks} chunks indexed)`,
         },
       ]);
-    } catch (err) {
-      console.error(err);
-      alert("Upload failed");
+    } catch (err: any) {
+      console.error("Upload Error:", err);
+      alert(`Upload failed: ${err.response?.data?.detail || err.message}`);
+    } finally {
+      setUploading(false);
+      if (fileRef.current) {
+        fileRef.current.value = "";
+      }
     }
   };
 
@@ -96,13 +106,16 @@ export default function App() {
 
         <div className="flex gap-3">
           <button
+            type="button"
             onClick={() => fileRef.current?.click()}
-            className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-sm"
+            disabled={uploading}
+            className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-sm disabled:opacity-50"
           >
-            Upload Document
+            {uploading ? "Uploading..." : "Upload Document"}
           </button>
 
           <button
+            type="button"
             onClick={clearContext}
             className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm"
           >

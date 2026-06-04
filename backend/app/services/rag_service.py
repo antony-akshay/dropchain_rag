@@ -5,10 +5,11 @@ from langchain_groq import ChatGroq
 
 from app.utils.text_splitter import get_splitter
 from app.services.vectorstore import create_vectorstore, load_vectorstore
-from app.config import GROQ_MODEL
+from app.config import GROQ_MODEL, GROQ_API_KEY
 
 llm = ChatGroq(
     model=GROQ_MODEL,
+    groq_api_key=GROQ_API_KEY,
     temperature=0
 )
 

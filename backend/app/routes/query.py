@@ -1,3 +1,4 @@
+import traceback
 from fastapi import APIRouter, HTTPException
 from app.schemas import QueryRequest, QueryResponse
 from app.services.rag_service import answer_question
@@ -13,4 +14,6 @@ async def query(request: QueryRequest):
             sources=result["sources"]
         )
     except Exception as e:
+        print("QUERY ERROR:")
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))

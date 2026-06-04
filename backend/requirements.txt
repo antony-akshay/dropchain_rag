@@ -4,6 +4,7 @@ python-multipart
 langchain
 langchain-community
 langchain-groq
+langchain-chroma
 chromadb
 python-dotenv
 langchain-huggingface
