@@ -1,0 +1,1 @@
+This is a final test to ensure the Singleton ChromaDB client resolves all the SQLite lock and readonly errors we have been fighting.

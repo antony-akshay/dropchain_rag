@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Configuration constants
-PERSIST_DIR = os.getenv("PERSIST_DIR", "./chroma_db")
+PERSIST_DIR = "/app/chroma_db/data"
 UPLOAD_DIR = os.getenv("UPLOAD_DIR", "./uploads")
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "900"))
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "150"))

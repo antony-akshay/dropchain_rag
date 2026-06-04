@@ -4,14 +4,15 @@ services:
       context: ./backend
     container_name: rag-backend
     ports:
-      - "8000:8000"
+      - "8080:8080"
     env_file:
       - .env
     volumes:
-      - ./backend/uploads:/app/uploads
-      - ./backend/chroma_db:/app/chroma_db
+      - uploads:/app/uploads
+      - chroma_db:/app/chroma_db
 
   frontend:
+# ...
     build:
       context: ./frontend
     container_name: rag-frontend
@@ -19,3 +20,7 @@ services:
       - "5173:5173"
     depends_on:
       - backend
+
+volumes:
+  uploads:
+  chroma_db:

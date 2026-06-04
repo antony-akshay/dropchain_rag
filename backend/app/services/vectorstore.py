@@ -1,43 +1,50 @@
 import os
-import shutil
-from typing import List
+import chromadb
+from chromadb.config import Settings
+from typing import List, Optional
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 
 from app.config import PERSIST_DIR
-from app.services.embeddings import embeddings
+from app.services.embeddings import get_embeddings
+
+# Singleton client
+_client: Optional[chromadb.PersistentClient] = None
+
+def get_client() -> chromadb.PersistentClient:
+    global _client
+    if _client is None:
+        os.makedirs(PERSIST_DIR, exist_ok=True)
+        _client = chromadb.PersistentClient(
+            path=PERSIST_DIR,
+            settings=Settings(allow_reset=True)
+        )
+    return _client
 
 def delete_vectorstore() -> None:
-    """Deletes the contents of the existing Chroma DB persist directory."""
-    if os.path.exists(PERSIST_DIR):
-        for item in os.listdir(PERSIST_DIR):
-            item_path = os.path.join(PERSIST_DIR, item)
-            try:
-                if os.path.isfile(item_path) or os.path.islink(item_path):
-                    os.unlink(item_path)
-                elif os.path.isdir(item_path):
-                    shutil.rmtree(item_path)
-            except Exception as e:
-                print(f"Failed to delete {item_path}: {e}")
+    client = get_client()
+    try:
+        client.reset()
+    except Exception as e:
+        print(f"Reset error: {e}")
 
 def create_vectorstore(documents: List[Document]) -> Chroma:
-    """Creates a fresh vectorstore from documents. Deletes older ones if any."""
-    # Filter tiny noise chunks
     chunks = [c for c in documents if len(c.page_content.strip()) > 30]
-
     delete_vectorstore()
-
-    vectorstore = Chroma.from_documents(
-        documents=chunks,
-        embedding=embeddings,
+    
+    vectorstore = Chroma(
+        client=get_client(),
+        embedding_function=get_embeddings(),
         persist_directory=PERSIST_DIR
     )
-
+    
+    if chunks:
+        vectorstore.add_documents(chunks)
     return vectorstore
 
 def load_vectorstore() -> Chroma:
-    """Loads an existing vectorstore from the persist directory."""
     return Chroma(
-        persist_directory=PERSIST_DIR,
-        embedding_function=embeddings
+        client=get_client(),
+        embedding_function=get_embeddings(),
+        persist_directory=PERSIST_DIR
     )
