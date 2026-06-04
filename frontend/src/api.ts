@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_BASE_URL =
-    import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+    import.meta.env.VITE_API_URL || "/api";
 
 const api = axios.create({
     baseURL: API_BASE_URL,
@@ -41,5 +41,10 @@ export async function queryDocument(
         }
     );
 
+    return response.data;
+}
+
+export async function clearDocument(): Promise<{ message: string }> {
+    const response = await api.post("/clear");
     return response.data;
 }

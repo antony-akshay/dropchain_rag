@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { queryDocument, uploadDocument } from "./api";
+import { clearDocument, queryDocument, uploadDocument } from "./api";
 
 type Message = {
   role: "system" | "user" | "assistant";
@@ -89,7 +89,17 @@ export default function App() {
     }
   };
 
-  const clearContext = () => {
+  const [clearing, setClearing] = useState(false);
+
+  const clearContext = async () => {
+    setClearing(true);
+    try {
+      await clearDocument();
+    } catch (err: any) {
+      console.error("Clear Error:", err);
+    } finally {
+      setClearing(false);
+    }
     setMessages([]);
     setDocumentName("");
     setOpenCitation(null);
@@ -117,9 +127,10 @@ export default function App() {
           <button
             type="button"
             onClick={clearContext}
-            className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm"
+            disabled={clearing}
+            className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm disabled:opacity-50"
           >
-            Clear Context
+            {clearing ? "Clearing..." : "Clear Context"}
           </button>
         </div>
 

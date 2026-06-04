@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
     env_file:
-      - ./backend/.env
+      - .env
     volumes:
       - ./backend/uploads:/app/uploads
       - ./backend/chroma_db:/app/chroma_db

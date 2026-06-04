@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import ingest, query
+from app.routes import ingest, query, clear
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -21,6 +21,7 @@ app.add_middleware(
 # Include routers
 app.include_router(ingest.router)
 app.include_router(query.router)
+app.include_router(clear.router)
 
 @app.get("/")
 def root():
